@@ -16,7 +16,7 @@ import { BATCH_SIZE } from "../defaults";
 const INFO = {
     namespace: "bankless-academy",
     name: "Course",
-    version: "V2",
+    version: "V3",
 };
 
 class Quiz {
@@ -71,6 +71,10 @@ class Course {
     slug: string;
     @RequiredArrayRef(Slide)
     slides: Slide[];
+    @NonEmptyProperty()
+    lessonImageLink: string;
+    @NonEmptyProperty()
+    marketingDescription: string;
 }
 
 const APIQuiz = t.intersection([
@@ -121,6 +125,8 @@ const APICourse = t.strict({
     notionId: t.string,
     slug: t.string,
     slides: t.array(APISlide),
+    lessonImageLink: t.string,
+    marketingDescription: t.string,
 });
 
 const APICourses = t.array(APICourse);
@@ -202,6 +208,8 @@ export class BanklessAcademyCourseLoader extends HTTPDataLoaderBase<
                         notionId: course.notionId,
                         slug: course.slug,
                         slides: slides,
+                        lessonImageLink: course.lessonImageLink,
+                        marketingDescription: course.marketingDescription,
                     };
                 } catch (e) {
                     this.logger.warn(`Processing Course failed`, e, course);
