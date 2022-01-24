@@ -1,23 +1,22 @@
 import { notEmpty } from "@banklessdao/util-misc";
-import { ScheduleMode } from "@shared/util-loaders";
 import {
     Data,
     NonEmptyProperty,
     OptionalObjectRef,
     OptionalProperty,
     RequiredArrayRef,
-    RequiredStringArrayOf
+    RequiredStringArrayOf,
 } from "@banklessdao/util-schema";
+import { LoadContext, ScheduleMode } from "@shared/util-loaders";
 import * as t from "io-ts";
 import { withMessage } from "io-ts-types";
-import { LoadContext } from "libs/shared/util-loaders/src/context/LoadContext";
 import { HTTPDataLoaderBase } from "../base/HTTPDataLoaderBase";
 import { BATCH_SIZE } from "../defaults";
 
 const INFO = {
     namespace: "bankless-academy",
     name: "Course",
-    version: "V1",
+    version: "V2",
 };
 
 class Quiz {
